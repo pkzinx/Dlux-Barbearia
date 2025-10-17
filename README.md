@@ -1,6 +1,6 @@
 <div align="center">
-  <img width="150px" height="150px" src="https://github.com/rafaabatistas/98barbershop/blob/master/public/assets/svg/logo-readme.svg">
-  <h1>98Barbershop</h1>
+  <img width="150px" height="150px" src="public/assets/img/LOGOTIPO1.png">
+  <h1>Dlux Barbearia</h1>
 </div>
 
 <div align="center">
@@ -13,13 +13,20 @@
 
 ## :fire: Acesso ao Projeto
 
-[Clique aqui](https://98barbershop.vercel.app) para acessar o projeto.
+[Clique aqui](https://dlux-barbearia.vercel.app) para acessar o projeto.
 
-[Clique aqui](https://98barbershop-storybook.netlify.app/) para acessar a nossa documentação da UI.
+[Clique aqui](https://dlux-barbearia-storybook.netlify.app/) para acessar a nossa documentação da UI.
 
 ## :dart: Objetivo
 
-Com a proposta de criar um projeto para a barbearia 98Barbershop, a gente se propôs a criação de um website que vai trazer uma nova forma de comunicação com seus clientes. Foi feita em primeira instância um estudo de caso, como, entender as necessidades do público alvo da empresa para assim poder de forma correta escolher todas as fontes, formas e cores capazes de estabelecer uma comunicação eficiente com os clientes dentro do projeto. Entretando é preciso ter também uma boa performance e boa indexação no Google, e nada melhor do que utilizar o NextJS com boas práticas para obter esse resultado.
+Com a proposta de criar um projeto para a **Dlux Barbearia**, desenvolvemos um website moderno e elegante que traz uma nova forma de comunicação com os clientes. Foi realizado um estudo de caso para entender as necessidades do público-alvo da empresa, permitindo escolher fontes, formas e cores capazes de estabelecer uma comunicação eficiente com os clientes.
+
+O projeto foi desenvolvido com foco em:
+- **Performance otimizada** com NextJS
+- **Design responsivo** e moderno
+- **Experiência do usuário** intuitiva
+- **SEO otimizado** para melhor indexação no Google
+- **Sistema de avaliações** integrado
 
 ## :hammer_and_wrench: Ferramentas
 
@@ -51,7 +58,7 @@ Chave | Descrição |
  ### Faça um clone desse repositório
  
  ```bash
- git clone https://github.com/rafaabatistas/98barbershop
+ git clone https://github.com/pkzinx/Dlux-Barbearia
  ```
  
 ### Instale as dependências
@@ -60,10 +67,54 @@ Chave | Descrição |
  yarn install
  ```
  
+ ### Configure as variáveis de ambiente
+
+Crie um arquivo `.env.local` na raiz do projeto:
+
+```bash
+GRAPHQL_HOST=https://graphql.datocms.com/
+GRAPHQL_TOKEN=demo-token
+NODE_OPTIONS=--openssl-legacy-provider
+```
+
  ### Dê start ao projeto
  
  ```bash
- yarn build
- yarn start
+ yarn dev
  ```
- 
+
+Para acessar pelo celular na mesma rede Wi-Fi:
+```bash
+yarn dev --hostname 0.0.0.0
+```
+
+## :star: Funcionalidades
+
+- **Design Responsivo**: Adaptado para desktop, tablet e mobile
+- **Slider Horizontal**: Banner principal com navegação intuitiva
+- **Sistema de Serviços**: Corte, barba e combo com tempos estimados
+- **Equipe**: Apresentação dos 5 profissionais com fotos em formato bolha
+- **Avaliações**: Sistema de feedback integrado com DatoCMS
+- **Formulário de Contato**: Com seleção de profissional que atendeu
+- **Mapa Interativo**: Localização da barbearia
+- **SEO Otimizado**: Meta tags e estrutura para melhor indexação
+
+## :team: Equipe
+
+- **Rikelv** - Barbeiro
+- **Emerso** - Barbeiro  
+- **Kaue** - Barbeiro
+- **Kevin** - Barbeiro
+- **Alafi** - Barbeiro
+
+## :gear: Serviços Oferecidos
+
+- **Corte de Cabelo Masculino** - R$ 30,00 (30 min)
+- **Barba** - R$ 20,00 (20 min)
+- **Corte + Barba** - R$ 35,00 (50 min)
+
+## :phone: Contato
+
+- **Instagram**: [@dlux_barbearia_](https://www.instagram.com/dlux_barbearia_/)
+- **WhatsApp**: +55 11 98654-8715
+- **Endereço**: Rua Caminho Encanto 334 - Guarulhos - SP
