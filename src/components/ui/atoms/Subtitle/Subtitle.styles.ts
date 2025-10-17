@@ -2,17 +2,15 @@ import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 import { SubtitleProps } from './Subtitle';
 
-export const WrapperSubtitle = styled.div<Pick<SubtitleProps, 'size' | 'lineBottom'>>`
-  ${({ theme, size, lineBottom }) => css`
+export const WrapperSubtitle = styled.div`
+  ${({ theme }) => css`
     width: 100%;
     display: flex;
     justify-content: center;
     margin-bottom: ${theme.spacings.medium};
 
     ${media.greaterThan('medium')`
-      margin-bottom: ${
-        lineBottom ? theme.spacings.huge : size === 'normal' ? theme.spacings.large : theme.spacings.xlarge
-      };
+      margin-bottom: ${theme.spacings.large};
     `}
   `}
 `;

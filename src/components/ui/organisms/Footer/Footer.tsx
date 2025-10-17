@@ -12,7 +12,7 @@ export const Footer = () => (
       <S.BoxLogo>
         <Logotipo />
         <S.Description size="normal">
-          A 98 BarberShop é um espaço de serviços masculinos que combina valores tradicionais com estilo moderno. Uma
+          A Dlux Barbearia é um espaço de serviços masculinos que combina valores tradicionais com estilo moderno. Uma
           barbearia contemporânea com uma atmosfera informal e alegre.
         </S.Description>
       </S.BoxLogo>
@@ -22,7 +22,7 @@ export const Footer = () => (
         <S.BoxSocialMedia>
           <SocialMedia
             marginRight
-            link="https://www.instagram.com/98barbershop/"
+            link="https://www.instagram.com/dlux_barbearia_/"
             image="/assets/svg/instagram-icon.svg"
             alt="Link que leva para a página no instagram"
           />
@@ -51,9 +51,10 @@ export const Footer = () => (
         <S.Arrow size={25} />
       </S.BoxIcon>
 
-      <S.Description size="small">Rua Caminho Encanto 334 - Guarulhos - SP</S.Description>
+      <S.Description size="small">R. Montes Claros, 346 - Varzelândia MG, 39450-000
+      </S.Description>
       <S.Description size="small">
-        Copyright ©2021 <span>98Barbershop</span>. Todos os direitos reservados
+        Copyright ©2025 <span>Dlux Barbearia</span>. Todos os direitos reservados
       </S.Description>
     </S.BoxInfoLocation>
   </S.Footer>

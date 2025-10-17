@@ -37,6 +37,12 @@ export const Wrapper = styled.div<LogotipoProps>`
       margin: 0 ${theme.spacings.huge};
     `}
 
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
     ${!!size && wrapperModifiers[size]}
     ${!!hideOnMobile && wrapperModifiers.hideOnMobile}
   `}

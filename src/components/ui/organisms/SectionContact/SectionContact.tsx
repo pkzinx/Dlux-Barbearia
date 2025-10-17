@@ -20,7 +20,7 @@ type FormInputsProps = {
   surname: string;
   email: string;
   feedback: string;
-  answered: 'unavailable' | 'cleber_mariano' | 'luan_silva' | 'fabricio_marques';
+  answered: 'unavailable' | 'rikelv' | 'emerso' | 'kaue' | 'kevin' | 'alafi';
   stars: '1' | '2' | '3' | '4' | '5';
   recommend?: 'true' | 'false';
 };
@@ -42,9 +42,11 @@ export const SectionContact = () => {
 
   const photoContributors = {
     unavailable: 'foto_indisponivel.jpg',
-    cleber_mariano: 'contributors-1.jpg',
-    luan_silva: 'contributors-2.jpg',
-    fabricio_marques: 'contributors-3.jpg'
+    rikelv: 'desc.jpg',
+    emerso: 'desc.jpg',
+    kaue: 'desc.jpg',
+    kevin: 'desc.jpg',
+    alafi: 'desc.jpg'
   };
 
   const calcMaxLength = (numberCaracteres: number) => {
@@ -174,14 +176,20 @@ export const SectionContact = () => {
                 placeholder="Nenhuma resposta selecionanda"
                 selected={formInputs.answered === 'unavailable'}
               >
-                <option role="option" value="cleber_mariano">
-                  Cleber Mariano
+                <option role="option" value="rikelv">
+                  Rikelv
                 </option>
-                <option role="option" value="luan_silva">
-                  Luan Silva
+                <option role="option" value="emerso">
+                  Emerso
                 </option>
-                <option role="option" value="fabricio_marques">
-                  Fabrício Marques
+                <option role="option" value="kaue">
+                  Kaue
+                </option>
+                <option role="option" value="kevin">
+                  Kevin
+                </option>
+                <option role="option" value="alafi">
+                  Alafi
                 </option>
               </SelectGroup>
               <S.BoxClerk data-testid="photo-clerk" src={photoContributors[formInputs.answered]} />

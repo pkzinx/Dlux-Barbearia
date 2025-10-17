@@ -3,12 +3,10 @@ import media from 'styled-media-query';
 import { Container } from '~atoms/Container/Container';
 
 export const Wrapper = styled.section`
-  ${media.greaterThan('huge')`
-    min-height: 106rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  padding: 4rem 0;
+  
+  ${media.greaterThan('medium')`
+    padding: 6rem 0;
   `}
 `;
 
@@ -21,8 +19,8 @@ export const ContainerContributors = styled(Container)`
 `;
 
 export const BoxContributors = styled.div`
-  max-width: 15.5rem;
-  height: 28.6rem;
+  max-width: 12rem;
+  height: 20rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,33 +28,35 @@ export const BoxContributors = styled.div`
   text-align: center;
 
   ${media.greaterThan('small')`
-    max-width: 32rem;
-    height: 52.2rem;    
+    max-width: 18rem;
+    height: 28rem;    
   `}
 
   ${media.greaterThan('medium')`
-    max-width: 41rem;
-    height: 64.2rem;
+    max-width: 22rem;
+    height: 32rem;
   `}
 `;
 
 export const Image = styled.img`
   ${({ theme }) => css`
-    width: 15.5rem;
-    height: 22rem;
+    width: 10rem;
+    height: 10rem;
     object-fit: cover;
-    border-radius: ${theme.border.radius.light};
+    border-radius: 50%;
     background-size: cover;
     background-position: center;
+    border: 3px solid ${theme.colors.primary};
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
     ${media.greaterThan('small')`
-      width: 32rem;
-      height: 40.2rem;
+      width: 14rem;
+      height: 14rem;
     `}
 
     ${media.greaterThan('medium')`
-      width: 41rem;
-      height: 54.6rem;
+      width: 16rem;
+      height: 16rem;
     `}
   `}
 `;
@@ -68,11 +68,12 @@ export const Name = styled.h3`
     font-weight: ${theme.font.medium};
     font-size: ${theme.font.sizes.medium};
     line-height: ${theme.spacings.small};
-    margin: 3rem 0 1.4rem;
+    margin: 2rem 0 1rem;
 
     ${media.greaterThan('small')`
       font-size: ${theme.font.sizes.big};
       line-height: ${theme.spacings.medium};
+      margin: 2.5rem 0 1.2rem;
     `}
   `}
 `;

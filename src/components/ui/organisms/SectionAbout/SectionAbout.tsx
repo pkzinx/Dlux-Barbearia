@@ -16,12 +16,12 @@ export const SectionAbout = () => {
           <HeadingAbout
             icon="/assets/svg/icon-about.svg"
             title="Olá Pessoal"
-            subtitle="Nós Somos a 98BarberShop"
+            subtitle="Nós Somos a Dlux Barbearia"
             lineBottom={isPortrait}
             lineLeft
           />
           <S.Description>
-            A 98 BarberShop é um espaço de serviços masculinos que combina valores tradicionais com estilo moderno. Uma
+            A Dlux Barbearia é um espaço de serviços masculinos que combina valores tradicionais com estilo moderno. Uma
             barbearia contemporânea com uma atmosfera informal e alegre. Um espaço para homens com estilo moderno,
             energia jovem e com pensamento inovador.
           </S.Description>

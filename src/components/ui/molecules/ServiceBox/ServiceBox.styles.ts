@@ -68,3 +68,29 @@ export const Description = styled.div`
     margin-top: 0.5rem;
   `}
 `;
+
+export const Duration = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    padding: 0.5rem 0.8rem;
+    background: rgba(26, 255, 234, 0.1);
+    border: 1px solid ${theme.colors.primary};
+    border-radius: 0.5rem;
+    width: fit-content;
+  `}
+`;
+
+export const DurationIcon = styled.span`
+  font-size: 1.2rem;
+`;
+
+export const DurationText = styled.span`
+  ${({ theme }) => css`
+    color: ${theme.colors.primary};
+    font-size: ${theme.font.sizes.xsmall};
+    font-weight: ${theme.font.medium};
+  `}
+`;

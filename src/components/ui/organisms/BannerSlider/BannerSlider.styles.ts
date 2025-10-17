@@ -65,11 +65,13 @@ export const Wrapper = styled.main`
     ${media.greaterThan('large')`
       .slick-dots {
         position: absolute;
-        right: 5rem;
-        flex-direction: column;
-        width: fit-content;
-        height: 100%;
-        top: 0;
+        bottom: calc(100vh * 0.1);
+        flex-direction: row;
+        width: 100%;
+        height: fit-content;
+        top: auto;
+        left: 0;
+        right: 0;
       }
     `}
   `}

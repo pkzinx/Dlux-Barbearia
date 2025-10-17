@@ -12,9 +12,9 @@ function App({ Component, pageProps }: AppProps) {
     <ContextProviders>
       <ThemeProvider theme={theme}>
         <Head>
-          <title>98Barbershop</title>
-          <link rel="shortcut icon" href="assets/img/icon-logo.png" type="image/x-icon" />
-          <link rel="apple-touch-icon" href="assets/img/icon-logo.png" type="image/x-icon" />
+          <title>Dlux Barbearia</title>
+          <link rel="shortcut icon" href="assets/img/LOGOTIPO1.png" type="image/x-icon" />
+          <link rel="apple-touch-icon" href="assets/img/LOGOTIPO1.png" type="image/x-icon" />
           <link rel="apple-touch-icon" href="assets/img/logotipo-36-36.png" sizes="36x36" />
           <link rel="apple-touch-icon" href="assets/img/logotipo-48-48.png" sizes="48x48" />
           <link rel="apple-touch-icon" href="assets/img/logotipo-72-72.png" sizes="72x72" />
@@ -24,7 +24,7 @@ function App({ Component, pageProps }: AppProps) {
           <link rel="apple-touch-icon" href="assets/img/logotipo-512-512.png" sizes="512x512" />
           <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content="#080808" />
-          <meta name="description" content="98Barbershop, sua barbearia preferida agora em uma plataforma." />
+          <meta name="description" content="Dlux Barbearia, sua barbearia preferida agora em uma plataforma." />
           <link
             rel="stylesheet"
             href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"

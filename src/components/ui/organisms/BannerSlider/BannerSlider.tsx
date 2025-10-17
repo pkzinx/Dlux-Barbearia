@@ -10,8 +10,8 @@ export type BannerSliderProps = {
 const settings: SliderSettings = {
   dots: true,
   arrows: false,
-  vertical: true,
-  verticalSwiping: true,
+  vertical: false,
+  verticalSwiping: false,
   infinite: true,
   speed: 1000,
   autoplay: true,
