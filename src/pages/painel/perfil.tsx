@@ -126,6 +126,9 @@ const PerfilPage = () => {
       case 'financeiro':
         router.push('/painel/financeiro');
         break;
+      case 'administracao':
+        router.push('/painel/administracao');
+        break;
       default:
         break;
     }

@@ -121,6 +121,9 @@ const FinanceiroPage = () => {
       case 'perfil':
         router.push('/painel/perfil');
         break;
+      case 'administracao':
+        router.push('/painel/administracao');
+        break;
       default:
         break;
     }
