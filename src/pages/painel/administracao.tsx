@@ -48,6 +48,7 @@ const AdministracaoPage = () => {
   const [selectedBarber, setSelectedBarber] = useState<BarberStats | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedPeriod, setSelectedPeriod] = useState<number>(0); // 0 = todos os dados, 7, 15, 30, 60 dias
+  const [currentBarber, setCurrentBarber] = useState<Barber | null>(null);
 
   // Mock data para demonstração
   const mockBarbersStats: BarberStats[] = [
@@ -176,6 +177,30 @@ const AdministracaoPage = () => {
   };
 
   useEffect(() => {
+    // Verificar se há token de autenticação
+    const token = localStorage.getItem('barber_token');
+    if (!token) {
+      router.push('/painel/login');
+      return;
+    }
+
+    // Carregar dados do barbeiro logado
+    loadBarberData();
+  }, [router]);
+
+  const loadBarberData = async () => {
+    try {
+      const barberData = localStorage.getItem('barber_data');
+      if (barberData) {
+        const barber = JSON.parse(barberData);
+        setCurrentBarber(barber);
+      }
+    } catch (error) {
+      console.error('Erro ao carregar dados do barbeiro:', error);
+    }
+  };
+
+  useEffect(() => {
     // Simular carregamento de dados
     setTimeout(() => {
       const filteredData = filterDataByPeriod(mockBarbersStats, selectedPeriod);
@@ -248,7 +273,7 @@ const AdministracaoPage = () => {
   if (loading) {
     return (
       <PanelLayout
-        barber={null}
+        barber={currentBarber}
         currentPage="administracao"
         onNavigate={handleNavigate}
         onLogout={handleLogout}
@@ -270,7 +295,7 @@ const AdministracaoPage = () => {
       </Head>
 
       <PanelLayout
-        barber={null}
+        barber={currentBarber}
         currentPage="administracao"
         onNavigate={handleNavigate}
         onLogout={handleLogout}
