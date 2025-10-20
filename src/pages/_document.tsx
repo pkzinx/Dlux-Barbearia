@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
-import Analytics from '~atoms/Analytics/Analytics';
+import Analytics from '../components/ui/atoms/Analytics/Analytics';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useState } from 'react';
 
-import reviews from '~organisms/Review/mock';
-import { ReviewBoxProps } from '~molecules/ReviewBox/ReviewBox';
+import reviews from '../components/ui/organisms/Review/mock';
+import { ReviewBoxProps } from '../components/ui/molecules/ReviewBox/ReviewBox';
 
 export type ReviewContextProps = {
   reviews: ReviewBoxProps[];

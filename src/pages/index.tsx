@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { GetStaticProps } from 'next';
 
-import client from '~graphql/client';
-import { GET_REVIEWS } from '~graphql/queries';
-import { GetReviewsProps } from '~graphql/types/graphql';
-import { ReviewContext } from '~contexts/ReviewContext';
-import { ReviewProps } from '~organisms/Review/Review';
+import client from '../graphql/client';
+import { GET_REVIEWS } from '../graphql/queries';
+import { GetReviewsProps } from '../graphql/types/graphql';
+import { ReviewContext } from '../contexts/ReviewContext';
+import { ReviewProps } from '../components/ui/organisms/Review/Review';
 
-import HomePage from '~templates/HomePage/HomePage';
+import HomePage from '../components/ui/templates/HomePage/HomePage';
 
 export default function Home({ reviews }: ReviewProps) {
   const { setReviews } = useContext(ReviewContext);
@@ -42,16 +42,16 @@ export const getStaticProps: GetStaticProps = async () => {
       {
         answered: true,
         stars: 5,
-        feedback: "Excelente atendimento! Recomendo.",
-        name: "João",
-        surname: "Silva"
+        feedback: 'Excelente atendimento! Recomendo.',
+        name: 'João',
+        surname: 'Silva'
       },
       {
         answered: true,
         stars: 4,
-        feedback: "Muito bom serviço, ambiente agradável.",
-        name: "Maria",
-        surname: "Santos"
+        feedback: 'Muito bom serviço, ambiente agradável.',
+        name: 'Maria',
+        surname: 'Santos'
       }
     ];
 
