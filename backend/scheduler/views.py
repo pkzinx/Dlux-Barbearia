@@ -202,43 +202,59 @@ class BarberStatsAPIView(APIView):
     def get(self, request):
         """
         Retorna estatísticas de todos os barbeiros
+        Query params:
+        - period: número de dias para filtrar (7, 15, 30, 60). Se não informado, retorna todos os dados
         """
         try:
-            # Data atual e início do mês
+            # Obter parâmetro de período
+            period = request.GET.get('period', '0')
+            try:
+                period = int(period)
+            except ValueError:
+                period = 0
+            
+            # Data atual e início do período
             now = datetime.now()
-            month_start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+            if period > 0:
+                period_start = now - timedelta(days=period)
+            else:
+                period_start = None  # Todos os dados
             
             barbers_stats = []
             
             for barber in Barber.objects.all():
                 # Agendamentos do barbeiro
                 appointments = Appointment.objects.filter(barber=barber)
-                monthly_appointments = appointments.filter(
-                    scheduled_date__gte=month_start,
-                    scheduled_date__lte=now
-                )
+                
+                if period_start:
+                    period_appointments = appointments.filter(
+                        scheduled_date__gte=period_start,
+                        scheduled_date__lte=now
+                    )
+                else:
+                    period_appointments = appointments
                 
                 # Estatísticas
                 total_appointments = appointments.count()
                 completed_appointments = appointments.filter(status='completed').count()
-                monthly_completed = monthly_appointments.filter(status='completed').count()
+                period_completed = period_appointments.filter(status='completed').count()
                 
-                # Receita mensal
-                monthly_revenue = monthly_appointments.filter(
+                # Receita do período
+                period_revenue = period_appointments.filter(
                     status='completed'
                 ).aggregate(
                     total=Sum('service__price')
                 )['total'] or 0
                 
-                # Agendamentos recentes (últimos 5)
-                recent_appointments = monthly_appointments.order_by('-scheduled_date')[:5]
+                # Agendamentos recentes (últimos 5 do período)
+                recent_appointments = period_appointments.order_by('-scheduled_date')[:5]
                 
                 barber_stats = {
                     'barber': BarberSerializer(barber).data,
                     'total_appointments': total_appointments,
-                    'completed_appointments': completed_appointments,
-                    'monthly_appointments': monthly_completed,
-                    'monthly_revenue': float(monthly_revenue),
+                    'completed_appointments': period_completed,
+                    'monthly_appointments': period_completed,
+                    'monthly_revenue': float(period_revenue),
                     'average_rating': 4.5,  # Mock - implementar sistema de avaliações
                     'recent_appointments': AppointmentSerializer(recent_appointments, many=True).data
                 }
@@ -364,10 +380,22 @@ class AdminDashboardAPIView(APIView):
     def get(self, request):
         """
         Retorna estatísticas gerais do sistema
+        Query params:
+        - period: número de dias para filtrar (7, 15, 30, 60). Se não informado, retorna todos os dados
         """
         try:
+            # Obter parâmetro de período
+            period = request.GET.get('period', '0')
+            try:
+                period = int(period)
+            except ValueError:
+                period = 0
+            
             now = datetime.now()
-            month_start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+            if period > 0:
+                period_start = now - timedelta(days=period)
+            else:
+                period_start = None  # Todos os dados
             
             # Estatísticas gerais
             total_barbers = Barber.objects.count()
@@ -377,10 +405,14 @@ class AdminDashboardAPIView(APIView):
             # Agendamentos
             appointments = Appointment.objects.all()
             total_appointments = appointments.count()
-            monthly_appointments = appointments.filter(
-                scheduled_date__gte=month_start,
-                scheduled_date__lte=now
-            )
+            
+            if period_start:
+                period_appointments = appointments.filter(
+                    scheduled_date__gte=period_start,
+                    scheduled_date__lte=now
+                )
+            else:
+                period_appointments = appointments
             
             # Receita
             total_revenue = appointments.filter(
@@ -389,19 +421,19 @@ class AdminDashboardAPIView(APIView):
                 total=Sum('service__price')
             )['total'] or 0
             
-            monthly_revenue = monthly_appointments.filter(
+            period_revenue = period_appointments.filter(
                 status='completed'
             ).aggregate(
                 total=Sum('service__price')
             )['total'] or 0
             
             # Status dos agendamentos
-            appointments_by_status = appointments.values('status').annotate(
+            appointments_by_status = period_appointments.values('status').annotate(
                 count=Count('id')
             )
             
             # Top barbeiros por receita
-            top_barbers = monthly_appointments.filter(
+            top_barbers = period_appointments.filter(
                 status='completed'
             ).values(
                 'barber__name', 'barber__id'
@@ -415,14 +447,14 @@ class AdminDashboardAPIView(APIView):
                     'total_barbers': total_barbers,
                     'total_services': total_services,
                     'total_clients': total_clients,
-                    'total_appointments': total_appointments
+                    'total_appointments': period_appointments.count()
                 },
                 'revenue_stats': {
                     'total_revenue': float(total_revenue),
-                    'monthly_revenue': float(monthly_revenue)
+                    'period_revenue': float(period_revenue)
                 },
                 'appointments_stats': {
-                    'monthly_appointments': monthly_appointments.count(),
+                    'period_appointments': period_appointments.count(),
                     'by_status': list(appointments_by_status)
                 },
                 'top_barbers': list(top_barbers)

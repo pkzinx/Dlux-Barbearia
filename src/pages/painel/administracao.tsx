@@ -47,6 +47,7 @@ const AdministracaoPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedBarber, setSelectedBarber] = useState<BarberStats | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [selectedPeriod, setSelectedPeriod] = useState<number>(0); // 0 = todos os dados, 7, 15, 30, 60 dias
 
   // Mock data para demonstração
   const mockBarbersStats: BarberStats[] = [
@@ -55,7 +56,7 @@ const AdministracaoPage = () => {
         id: 1,
         name: 'Rikelv',
         email: 'rikelv@dlux.com',
-        photo_url: '/assets/img/testUser.png'
+        photo_url: '/assets/img/desc.jpg'
       },
       total_appointments: 45,
       completed_appointments: 42,
@@ -89,7 +90,7 @@ const AdministracaoPage = () => {
         id: 2,
         name: 'Emerso',
         email: 'emerso@dlux.com',
-        photo_url: '/assets/img/testUser.png'
+        photo_url: '/assets/img/desc.jpg'
       },
       total_appointments: 38,
       completed_appointments: 35,
@@ -113,7 +114,7 @@ const AdministracaoPage = () => {
         id: 3,
         name: 'Kaue',
         email: 'kaue@dlux.com',
-        photo_url: '/assets/img/testUser.png'
+        photo_url: '/assets/img/desc.jpg'
       },
       total_appointments: 52,
       completed_appointments: 48,
@@ -126,7 +127,7 @@ const AdministracaoPage = () => {
         id: 4,
         name: 'Kevin',
         email: 'kevin@dlux.com',
-        photo_url: '/assets/img/testUser.png'
+        photo_url: '/assets/img/desc.jpg'
       },
       total_appointments: 41,
       completed_appointments: 38,
@@ -139,7 +140,7 @@ const AdministracaoPage = () => {
         id: 5,
         name: 'Alafi',
         email: 'alafi@dlux.com',
-        photo_url: '/assets/img/testUser.png'
+        photo_url: '/assets/img/desc.jpg'
       },
       total_appointments: 33,
       completed_appointments: 30,
@@ -149,13 +150,39 @@ const AdministracaoPage = () => {
     }
   ];
 
+  // Função para filtrar dados por período
+  const filterDataByPeriod = (data: BarberStats[], period: number): BarberStats[] => {
+    if (period === 0) return data; // Todos os dados
+    
+    const now = new Date();
+    const periodStart = new Date(now.getTime() - (period * 24 * 60 * 60 * 1000));
+    
+    return data.map(barberStats => {
+      const filteredAppointments = barberStats.recent_appointments.filter(appointment => {
+        const appointmentDate = new Date(appointment.scheduled_date);
+        return appointmentDate >= periodStart;
+      });
+      
+      // Simular ajuste de estatísticas baseado no período
+      const periodMultiplier = period === 7 ? 0.25 : period === 15 ? 0.5 : period === 30 ? 0.75 : 1;
+      
+      return {
+        ...barberStats,
+        completed_appointments: Math.floor(barberStats.completed_appointments * periodMultiplier),
+        monthly_revenue: barberStats.monthly_revenue * periodMultiplier,
+        recent_appointments: filteredAppointments
+      };
+    });
+  };
+
   useEffect(() => {
     // Simular carregamento de dados
     setTimeout(() => {
-      setBarbersStats(mockBarbersStats);
+      const filteredData = filterDataByPeriod(mockBarbersStats, selectedPeriod);
+      setBarbersStats(filteredData);
       setLoading(false);
     }, 1000);
-  }, []);
+  }, [selectedPeriod]);
 
   const handleNavigate = (page: string) => {
     router.push(`/painel/${page}`);
@@ -204,6 +231,17 @@ const AdministracaoPage = () => {
     return new Date(dateString).toLocaleDateString('pt-BR');
   };
 
+  const getPeriodLabel = (period: number) => {
+    switch (period) {
+      case 0: return 'Total';
+      case 7: return 'Últimos 7 dias';
+      case 15: return 'Últimos 15 dias';
+      case 30: return 'Últimos 30 dias';
+      case 60: return 'Últimos 60 dias';
+      default: return 'Total';
+    }
+  };
+
   const totalRevenue = barbersStats.reduce((sum, barber) => sum + barber.monthly_revenue, 0);
   const totalAppointments = barbersStats.reduce((sum, barber) => sum + barber.completed_appointments, 0);
 
@@ -240,6 +278,42 @@ const AdministracaoPage = () => {
         subtitle="Gestão completa dos barbeiros e estatísticas"
       >
         <S.Container>
+          {/* Filtro de Período */}
+          <S.PeriodFilter>
+            <S.FilterTitle>Filtrar por Período:</S.FilterTitle>
+            <S.FilterButtons>
+              <S.FilterButton 
+                active={selectedPeriod === 0} 
+                onClick={() => setSelectedPeriod(0)}
+              >
+                Todos
+              </S.FilterButton>
+              <S.FilterButton 
+                active={selectedPeriod === 7} 
+                onClick={() => setSelectedPeriod(7)}
+              >
+                Últimos 7 dias
+              </S.FilterButton>
+              <S.FilterButton 
+                active={selectedPeriod === 15} 
+                onClick={() => setSelectedPeriod(15)}
+              >
+                Últimos 15 dias
+              </S.FilterButton>
+              <S.FilterButton 
+                active={selectedPeriod === 30} 
+                onClick={() => setSelectedPeriod(30)}
+              >
+                Últimos 30 dias
+              </S.FilterButton>
+              <S.FilterButton 
+                active={selectedPeriod === 60} 
+                onClick={() => setSelectedPeriod(60)}
+              >
+                Últimos 60 dias
+              </S.FilterButton>
+            </S.FilterButtons>
+          </S.PeriodFilter>
           {/* Resumo Geral */}
           <S.SummaryCards>
             <S.SummaryCard>
@@ -254,7 +328,7 @@ const AdministracaoPage = () => {
               <S.SummaryIcon>📅</S.SummaryIcon>
               <S.SummaryContent>
                 <S.SummaryValue>{totalAppointments}</S.SummaryValue>
-                <S.SummaryLabel>Serviços Concluídos</S.SummaryLabel>
+                <S.SummaryLabel>Serviços Concluídos ({getPeriodLabel(selectedPeriod)})</S.SummaryLabel>
               </S.SummaryContent>
             </S.SummaryCard>
 
@@ -262,7 +336,7 @@ const AdministracaoPage = () => {
               <S.SummaryIcon>💰</S.SummaryIcon>
               <S.SummaryContent>
                 <S.SummaryValue>{formatCurrency(totalRevenue)}</S.SummaryValue>
-                <S.SummaryLabel>Receita Total</S.SummaryLabel>
+                <S.SummaryLabel>Receita ({getPeriodLabel(selectedPeriod)})</S.SummaryLabel>
               </S.SummaryContent>
             </S.SummaryCard>
 
@@ -286,7 +360,7 @@ const AdministracaoPage = () => {
                   <S.BarberHeader>
                     <S.BarberPhoto>
                       <img 
-                        src={barberStats.barber.photo_url || '/assets/img/testUser.png'} 
+                        src={barberStats.barber.photo_url || '/assets/img/desc.jpg'} 
                         alt={barberStats.barber.name}
                       />
                     </S.BarberPhoto>
@@ -340,7 +414,7 @@ const AdministracaoPage = () => {
                   <S.ModalTitle>
                     <S.BarberPhoto>
                       <img 
-                        src={selectedBarber.barber.photo_url || '/assets/img/testUser.png'} 
+                        src={selectedBarber.barber.photo_url || '/assets/img/desc.jpg'} 
                         alt={selectedBarber.barber.name}
                       />
                     </S.BarberPhoto>

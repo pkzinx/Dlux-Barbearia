@@ -15,6 +15,67 @@ export const Container = styled.div`
   }
 `;
 
+export const PeriodFilter = styled.div`
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+`;
+
+export const FilterTitle = styled.h3`
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: '📅';
+    font-size: 1rem;
+  }
+`;
+
+export const FilterButtons = styled.div`
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
+`;
+
+export const FilterButton = styled.button<{ active: boolean }>`
+  background: ${props => props.active 
+    ? 'linear-gradient(135deg, #3abcbf, #2a9d9f)' 
+    : '#f8f9fa'
+  };
+  color: ${props => props.active ? 'white' : '#666'};
+  border: 2px solid ${props => props.active ? '#3abcbf' : '#e9ecef'};
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+
+  &:hover {
+    background: ${props => props.active 
+      ? 'linear-gradient(135deg, #2a9d9f, #1e7e80)' 
+      : '#e9ecef'
+    };
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+`;
+
 export const LoadingContainer = styled.div`
   display: flex;
   flex-direction: column;
