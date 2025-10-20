@@ -9,6 +9,10 @@ export const Container = styled.div`
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 export const LoadingContainer = styled.div`
@@ -39,6 +43,11 @@ export const SummaryCards = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 `;
 
 export const SummaryCard = styled.div`
@@ -108,6 +117,11 @@ export const BarbersGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 `;
 
 export const BarberCard = styled.div`
@@ -168,6 +182,11 @@ export const BarberStats = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
 `;
 
 export const StatItem = styled.div`
@@ -294,6 +313,11 @@ export const DetailedStats = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
 `;
 
 export const DetailedStat = styled.div`
@@ -350,6 +374,12 @@ export const AppointmentItem = styled.div`
   background: #f8f9fa;
   border-radius: 8px;
   border-left: 4px solid #3abcbf;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 `;
 
 export const AppointmentInfo = styled.div`
@@ -378,6 +408,11 @@ export const AppointmentDetails = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    width: 100%;
+  }
 `;
 
 export const AppointmentStatus = styled.div<{ color: string }>`
@@ -394,41 +429,3 @@ export const AppointmentPrice = styled.div`
   color: #333;
   font-size: 1rem;
 `;
-
-// Responsive Design
-@media (max-width: 768px) {
-  export const Container = styled.div`
-    padding: 1rem;
-  `;
-
-  export const SummaryCards = styled.div`
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  `;
-
-  export const BarbersGrid = styled.div`
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  `;
-
-  export const BarberStats = styled.div`
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  `;
-
-  export const DetailedStats = styled.div`
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  `;
-
-  export const AppointmentItem = styled.div`
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  `;
-
-  export const AppointmentDetails = styled.div`
-    align-items: flex-start;
-    width: 100%;
-  `;
-}
