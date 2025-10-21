@@ -1,6 +1,6 @@
 import { screen, fireEvent } from '@testing-library/react';
-import { renderWithTheme } from '~src/utils/tests/helpers';
-import theme from '~src/styles/theme';
+import { renderWithTheme } from '../../../../utils/tests/helpers';
+import theme from '../../../../styles/theme';
 
 import { InputRadio } from './InputRadio';
 

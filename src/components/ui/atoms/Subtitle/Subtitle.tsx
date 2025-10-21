@@ -1,6 +1,6 @@
 import * as S from './Subtitle.styles';
 
-import { TitleProps } from '~atoms/Title/Title';
+import { TitleProps } from '../Title/Title';
 import { HeadingProps } from '../../molecules/Heading/Heading';
 
 export type SubtitleProps = TitleProps & Pick<HeadingProps, 'lineBottom'>;

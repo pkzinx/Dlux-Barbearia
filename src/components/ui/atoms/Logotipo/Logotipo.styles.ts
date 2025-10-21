@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
-import { customMedia } from '~src/utils/media/customMedia';
+import { customMedia } from '../../../../utils/media/customMedia';
 
 import { LogotipoProps } from './Logotipo';
 

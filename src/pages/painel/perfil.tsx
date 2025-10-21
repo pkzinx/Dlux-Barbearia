@@ -120,9 +120,6 @@ const PerfilPage = () => {
       case 'agenda':
         router.push('/painel/agenda');
         break;
-      case 'agendamentos':
-        router.push('/painel/agendamentos');
-        break;
       case 'financeiro':
         router.push('/painel/financeiro');
         break;

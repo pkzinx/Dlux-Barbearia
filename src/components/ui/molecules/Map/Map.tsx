@@ -1,6 +1,6 @@
 import * as S from './Map.styles';
 
-import { TileLayer, Marker } from 'react-leaflet';
+import { TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import { useMediaQuery } from 'react-responsive';
 
 export type Place = {
@@ -35,13 +35,24 @@ const CustomTileLayer = () => {
   );
 };
 
+const MapClickHandler = () => {
+  useMapEvents({
+    click() {
+      if (typeof window !== 'undefined') {
+        window.open('https://maps.app.goo.gl/RcqFNYbKHADmsF289', '_blank', 'noopener,noreferrer');
+      }
+    }
+  });
+  return null;
+};
+
 const Map = ({ places }: MapProps) => {
   const isPortrait = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
     <S.Container>
       <S.Wrapper
-        center={[-23.403033674122092, -46.46941343726713]}
+        center={[-15.703486713884006, -44.02608671239952]}
         zoom={16}
         minZoom={3}
         dragging={!isPortrait}
@@ -53,6 +64,7 @@ const Map = ({ places }: MapProps) => {
         ]}
       >
         <CustomTileLayer />
+        <MapClickHandler />
         {places?.map(({ id, name, location }) => {
           const { latitude, longitude } = location;
           return <Marker key={`place-${id}`} position={[latitude, longitude]} title={name} />;

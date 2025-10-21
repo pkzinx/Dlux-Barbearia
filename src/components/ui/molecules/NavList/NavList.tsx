@@ -3,10 +3,10 @@ import * as S from './NavList.styles';
 import { useState } from 'react';
 import { Sling as Hamburger } from 'hamburger-react';
 
-import MediaMatch from '~molecules/MediaMatch/MediaMatch';
-import { Logotipo } from '~atoms/Logotipo/Logotipo';
-import { MenuMobile } from '~molecules/MenuMobile/MenuMobile';
-import { NavLinks } from '~molecules/NavLinks/NavLinks';
+import MediaMatch from '../../molecules/MediaMatch/MediaMatch';
+import { Logotipo } from '../../atoms/Logotipo/Logotipo';
+import { MenuMobile } from '../../molecules/MenuMobile/MenuMobile';
+import { NavLinks } from '../../molecules/NavLinks/NavLinks';
 
 export const NavList = () => {
   const [isOpen, setIsOpen] = useState(false);

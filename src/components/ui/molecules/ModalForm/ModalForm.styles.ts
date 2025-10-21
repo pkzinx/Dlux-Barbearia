@@ -25,9 +25,9 @@ export const Modal = styled.div<ModalFormStylesProps>`
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 90%;
-    max-width: 60rem;
-    max-height: 59rem;
+    width: 92%;
+    max-width: 68rem;
+    max-height: min(85vh, 72rem);
     background-color: ${theme.colors.gray};
     display: flex;
     align-items: center;
@@ -40,7 +40,10 @@ export const Modal = styled.div<ModalFormStylesProps>`
     transition: all 0.35s ease-in-out;
     transform: translate(-50%, -50%);
     z-index: ${theme.layers.modal};
-    padding: 5rem;
+    padding: 3rem 2rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   `}
 `;
 

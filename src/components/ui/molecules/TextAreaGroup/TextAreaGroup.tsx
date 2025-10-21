@@ -1,5 +1,5 @@
 import * as S from './TextAreaGroup.styles';
-import { InputGroupProps } from '~molecules/InputGroup/InputGroup';
+import { InputGroupProps } from '../../molecules/InputGroup/InputGroup';
 
 type InputProps = Pick<InputGroupProps, 'label' | 'labelFor' | 'required' | 'placeholder' | 'value'>;
 

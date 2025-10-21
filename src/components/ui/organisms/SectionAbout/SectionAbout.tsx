@@ -2,9 +2,9 @@ import * as S from './SectionAbout.styles';
 
 import { useMediaQuery } from 'react-responsive';
 
-import { HeadingAbout } from '~molecules/HeadingAbout/HeadingAbout';
-import { ButtonScroll } from '~atoms/ButtonScroll/ButtonScroll';
-import MediaMatch from '~molecules/MediaMatch/MediaMatch';
+import { HeadingAbout } from '../../molecules/HeadingAbout/HeadingAbout';
+import { ButtonScroll } from '../../atoms/ButtonScroll/ButtonScroll';
+import MediaMatch from '../../molecules/MediaMatch/MediaMatch';
 
 export const SectionAbout = () => {
   const isPortrait = useMediaQuery({ query: '(max-width: 1024px)' });

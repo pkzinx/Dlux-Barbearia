@@ -161,9 +161,6 @@ const AgendaPage = () => {
 
   const handleNavigate = (page: string) => {
     switch (page) {
-      case 'agendamentos':
-        router.push('/painel/agendamentos');
-        break;
       case 'perfil':
         router.push('/painel/perfil');
         break;

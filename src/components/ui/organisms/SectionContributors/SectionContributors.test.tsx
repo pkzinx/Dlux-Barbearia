@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
-import { renderWithTheme } from '~src/utils/tests/helpers';
-import contributors from '~organisms/SectionContributors/contributors.mock';
+import { renderWithTheme } from '../../../../utils/tests/helpers';
+import contributors from '../SectionContributors/contributors.mock';
 
 import { SectionContributors } from './SectionContributors';
 

@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import contributors from '~organisms/SectionContributors/contributors.mock';
+import contributors from '../SectionContributors/contributors.mock';
 
 import { SectionContributors, SectionContributorsProps } from './SectionContributors';
 

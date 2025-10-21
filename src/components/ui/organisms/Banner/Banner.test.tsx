@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/dom';
 
-import { renderWithTheme } from '~src/utils/tests/helpers';
+import { renderWithTheme } from '../../../../utils/tests/helpers';
 
 import { Banner, BannerProps } from './Banner';
 

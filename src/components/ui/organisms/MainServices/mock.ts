@@ -1,4 +1,4 @@
-import { ServiceBoxProps } from '~molecules/ServiceBox/ServiceBox';
+import { ServiceBoxProps } from '../../molecules/ServiceBox/ServiceBox';
 
 const services: ServiceBoxProps[] = [
   {
@@ -28,7 +28,8 @@ const services: ServiceBoxProps[] = [
       {
         title: 'Corte + Barba',
         price: 'R$ 35,00',
-        description: 'Corte de cabelo masculino com qualquer técnica, incluindo tesouras, mais aparação da barba, manutenção do desenho, hidratação e esfoliação.',
+        description:
+          'Corte de cabelo masculino com qualquer técnica, incluindo tesouras, mais aparação da barba, manutenção do desenho, hidratação e esfoliação.',
         duration: '50 min'
       }
     ],

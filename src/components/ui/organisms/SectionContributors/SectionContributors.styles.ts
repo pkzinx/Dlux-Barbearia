@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
-import { Container } from '~atoms/Container/Container';
+import { Container } from '../../atoms/Container/Container';
 
 export const Wrapper = styled.section`
   padding: 4rem 0;
-  
+
   ${media.greaterThan('medium')`
     padding: 6rem 0;
   `}

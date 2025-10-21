@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react';
 
 import { NavLinks, NavLinksProps } from './NavLinks';
-import { Logotipo } from '~atoms/Logotipo/Logotipo';
+import { Logotipo } from '../../atoms/Logotipo/Logotipo';
 import { NavList } from '../NavList/NavList.styles';
 
 export default {

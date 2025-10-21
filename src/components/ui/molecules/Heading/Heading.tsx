@@ -1,8 +1,8 @@
-import { Container } from '~atoms/Container/Container';
-import { Title } from '~atoms/Title/Title';
-import { Subtitle } from '~atoms/Subtitle/Subtitle';
-import { Description } from '~atoms/Description/Description';
-import { Button } from '~atoms/Button/Button';
+import { Container } from '../../atoms/Container/Container';
+import { Title } from '../../atoms/Title/Title';
+import { Subtitle } from '../../atoms/Subtitle/Subtitle';
+import { Description } from '../../atoms/Description/Description';
+import { Button } from '../../atoms/Button/Button';
 import { ButtonScroll } from '../../atoms/ButtonScroll/ButtonScroll';
 
 import * as S from './Heading.styles';

@@ -115,9 +115,6 @@ const FinanceiroPage = () => {
       case 'agenda':
         router.push('/painel/agenda');
         break;
-      case 'agendamentos':
-        router.push('/painel/agendamentos');
-        break;
       case 'perfil':
         router.push('/painel/perfil');
         break;

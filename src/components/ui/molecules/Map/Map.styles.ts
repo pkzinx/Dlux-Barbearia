@@ -46,3 +46,5 @@ export const ArrowMoldingDown = styled.svg`
     transform: translate(-50%, 0);
   `}
 `;
+
+// removed ClickOverlay to restore map interactivity

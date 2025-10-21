@@ -2,9 +2,9 @@ import * as S from './Footer.styles';
 
 import Link from 'next/link';
 
-import { SocialMedia } from '~atoms/SocialMedia/SocialMedia';
-import { Container } from '~atoms/Container/Container';
-import { Logotipo } from '~atoms/Logotipo/Logotipo';
+import { SocialMedia } from '../../atoms/SocialMedia/SocialMedia';
+import { Container } from '../../atoms/Container/Container';
+import { Logotipo } from '../../atoms/Logotipo/Logotipo';
 
 export const Footer = () => (
   <S.Footer>
@@ -51,8 +51,7 @@ export const Footer = () => (
         <S.Arrow size={25} />
       </S.BoxIcon>
 
-      <S.Description size="small">R. Montes Claros, 346 - Varzelândia MG, 39450-000
-      </S.Description>
+      <S.Description size="small">R. Montes Claros, 346 - Varzelândia MG, 39450-000</S.Description>
       <S.Description size="small">
         Copyright ©2025 <span>Dlux Barbearia</span>. Todos os direitos reservados
       </S.Description>

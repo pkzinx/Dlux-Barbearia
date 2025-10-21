@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react';
 
 import { Subtitle } from './Subtitle';
-import { TitleProps } from '~atoms/Title/Title';
+import { TitleProps } from '../../atoms/Title/Title';
 import { Container } from '../Container/Container';
 
 export default {

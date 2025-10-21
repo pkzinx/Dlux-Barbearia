@@ -1,7 +1,7 @@
-import { Background } from '~atoms/Background/Background';
-import { Heading } from '~molecules/Heading/Heading';
-import { Slider, SliderSettings } from '~molecules/Slider/Slider';
-import { ReviewBox, ReviewBoxProps } from '~molecules/ReviewBox/ReviewBox';
+import { Background } from '../../atoms/Background/Background';
+import { Heading } from '../../molecules/Heading/Heading';
+import { Slider, SliderSettings } from '../../molecules/Slider/Slider';
+import { ReviewBox, ReviewBoxProps } from '../../molecules/ReviewBox/ReviewBox';
 
 import * as S from './Review.styles';
 

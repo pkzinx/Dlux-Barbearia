@@ -1,4 +1,4 @@
-import { renderWithTheme } from '~src/utils/tests/helpers';
+import { renderWithTheme } from '../../../../utils/tests/helpers';
 
 import { NavItem } from './NavItem';
 

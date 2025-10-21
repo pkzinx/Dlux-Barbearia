@@ -2,16 +2,16 @@ import * as S from './SectionContact.styles';
 
 import { ChangeEvent, useState, useContext } from 'react';
 
-import { Heading } from '~molecules/Heading/Heading';
-import { InputGroup } from '~molecules/InputGroup/InputGroup';
-import { InputRadioGroup } from '~molecules/InputRadioGroup/InputRadioGroup';
-import { TextAreaGroup } from '~molecules/TextAreaGroup/TextAreaGroup';
-import { SelectGroup } from '~molecules/SelectGroup/SelectGroup';
-import { Button } from '~atoms/Button/Button';
-import { ModalForm } from '~molecules/ModalForm/ModalForm';
+import { Heading } from '../../molecules/Heading/Heading';
+import { InputGroup } from '../../molecules/InputGroup/InputGroup';
+import { InputRadioGroup } from '../../molecules/InputRadioGroup/InputRadioGroup';
+import { TextAreaGroup } from '../../molecules/TextAreaGroup/TextAreaGroup';
+import { SelectGroup } from '../../molecules/SelectGroup/SelectGroup';
+import { Button } from '../../atoms/Button/Button';
+import { ModalForm } from '../../molecules/ModalForm/ModalForm';
 
 import axios from 'axios';
-import { ReviewContext } from '~contexts/ReviewContext';
+import { ReviewContext } from '../../../../contexts/ReviewContext';
 
 type StatusRequest = 'success' | 'error';
 

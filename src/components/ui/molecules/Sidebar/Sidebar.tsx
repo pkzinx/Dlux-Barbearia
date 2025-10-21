@@ -17,7 +17,6 @@ type SidebarProps = {
 
 const menuItems = [
   { id: 'agenda', label: 'Agenda', icon: '📅' },
-  { id: 'agendamentos', label: 'Agendamentos', icon: '📋' },
   { id: 'perfil', label: 'Perfil', icon: '👤' },
   { id: 'financeiro', label: 'Financeiro', icon: '💰' },
   { id: 'administracao', label: 'Administração', icon: '⚙️' }

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/pyright/main/packages/vscode-pyright/schemas/pyrightconfig.schema.json",
+  "venvPath": "Dlux-Barbearia/backend",
+  "venv": ".venv",
+  "reportMissingImports": true,
+  "executionEnvironments": [
+    { "root": "Dlux-Barbearia/backend" }
+  ]
+}

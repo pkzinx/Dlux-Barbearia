@@ -41,6 +41,45 @@ export const Content = styled.div`
   `}
 `;
 
+export const CtaArea = styled.div`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.medium};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    button {
+      display: inline-block;
+      padding: 1.2rem 2.4rem;
+      border-radius: 0.8rem;
+      background: linear-gradient(90deg, ${theme.colors.primary} 0%, ${theme.colors.secondary} 100%);
+      color: ${theme.colors.black};
+      font-weight: ${theme.font.bold};
+      font-size: ${theme.font.sizes.small};
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-align: center;
+      width: 100%;
+      max-width: 28rem;
+      transition: transform 0.2s ease, filter 0.2s ease;
+      will-change: transform;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      border: 0;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.08);
+    }
+    button:active {
+      transform: translateY(0);
+      filter: brightness(0.96);
+    }
+  `}
+`;
+
 export const InfoPrimary = styled.div`
   ${({ theme }) => css`
     display: flex;
@@ -74,7 +113,7 @@ export const Duration = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 0.8rem;
+    margin: 0.8rem auto 0;
     padding: 0.5rem 0.8rem;
     background: rgba(26, 255, 234, 0.1);
     border: 1px solid ${theme.colors.primary};
