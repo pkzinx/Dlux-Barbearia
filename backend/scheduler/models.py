@@ -2,10 +2,17 @@ from django.db import models
 
 
 class Barber(models.Model):
+    ACCOUNT_TYPE_CHOICES = (
+        ('admin', 'Admin'),
+        ('lux', 'Lux'),
+    )
+    
     name = models.CharField(max_length=120)
     email = models.EmailField(unique=True)
     specialties = models.CharField(max_length=255, blank=True)
     photo_url = models.URLField(blank=True)
+    account_type = models.CharField(max_length=10, choices=ACCOUNT_TYPE_CHOICES, default='lux')
+    password = models.CharField(max_length=255, default='123456')  # Para autenticação
 
     def __str__(self) -> str:
         return self.name

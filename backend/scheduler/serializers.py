@@ -5,7 +5,7 @@ from .models import Barber, Service, Client, Appointment
 class BarberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Barber
-        fields = ['id', 'name', 'email', 'specialties', 'photo_url']
+        fields = ['id', 'name', 'email', 'specialties', 'photo_url', 'account_type']
 
 
 class ServiceSerializer(serializers.ModelSerializer):

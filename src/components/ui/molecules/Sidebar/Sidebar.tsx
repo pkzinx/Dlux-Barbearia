@@ -6,6 +6,7 @@ type Barber = {
   name: string;
   email: string;
   photo_url?: string;
+  account_type: 'admin' | 'lux';
 };
 
 type SidebarProps = {
@@ -16,10 +17,10 @@ type SidebarProps = {
 };
 
 const menuItems = [
-  { id: 'agenda', label: 'Agenda', icon: '📅' },
-  { id: 'perfil', label: 'Perfil', icon: '👤' },
-  { id: 'financeiro', label: 'Financeiro', icon: '💰' },
-  { id: 'administracao', label: 'Administração', icon: '⚙️' }
+  { id: 'agenda', label: 'Agenda', icon: '📅', adminOnly: false },
+  { id: 'perfil', label: 'Perfil', icon: '👤', adminOnly: false },
+  { id: 'financeiro', label: 'Financeiro', icon: '💰', adminOnly: true },
+  { id: 'administracao', label: 'Administração', icon: '⚙️', adminOnly: true }
 ];
 
 export const Sidebar = ({ barber, currentPage, onNavigate, onLogout }: SidebarProps) => {
@@ -48,12 +49,14 @@ export const Sidebar = ({ barber, currentPage, onNavigate, onLogout }: SidebarPr
         </S.UserSection>
 
         <S.NavMenu>
-          {menuItems.map((item) => (
-            <S.NavItem key={item.id} active={currentPage === item.id} onClick={() => handleNavigate(item.id)}>
-              <S.NavIcon>{item.icon}</S.NavIcon>
-              <S.NavText>{item.label}</S.NavText>
-            </S.NavItem>
-          ))}
+          {menuItems
+            .filter(item => barber?.account_type === 'admin' || !item.adminOnly)
+            .map((item) => (
+              <S.NavItem key={item.id} active={currentPage === item.id} onClick={() => handleNavigate(item.id)}>
+                <S.NavIcon>{item.icon}</S.NavIcon>
+                <S.NavText>{item.label}</S.NavText>
+              </S.NavItem>
+            ))}
         </S.NavMenu>
 
         <S.SidebarFooter>

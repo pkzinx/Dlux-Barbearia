@@ -9,6 +9,8 @@ type Barber = {
   name: string;
   email: string;
   photo_url?: string;
+  specialties?: string;
+  account_type: 'admin' | 'lux';
 };
 
 type Appointment = {

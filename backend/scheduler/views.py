@@ -185,7 +185,8 @@ class BarberLoginView(APIView):
                 return Response({
                     'access': f'barber_token_{barber.id}',
                     'refresh': f'barber_refresh_{barber.id}',
-                    'barber': BarberSerializer(barber).data
+                    'barber': BarberSerializer(barber).data,
+                    'account_type': barber.account_type
                 })
             except Barber.DoesNotExist:
                 return Response({'detail': 'Barbeiro não encontrado'}, status=status.HTTP_401_UNAUTHORIZED)

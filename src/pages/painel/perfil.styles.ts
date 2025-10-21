@@ -151,3 +151,116 @@ export const LoadingText = styled.p`
     margin: 4rem 0;
   `}
 `;
+
+// Estilos para estatísticas (contas Lux)
+export const StatsContainer = styled.div`
+  display: grid;
+  gap: 3rem;
+`;
+
+export const StatsTitle = styled.h2`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.xlarge};
+    color: ${theme.colors.textName};
+    font-weight: ${theme.font.bold};
+    text-align: center;
+    margin-bottom: 1rem;
+  `}
+`;
+
+export const StatsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+`;
+
+export const StatCard = styled.div`
+  ${({ theme }) => css`
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      border-color: ${theme.colors.primary};
+    }
+  `}
+`;
+
+export const StatIcon = styled.div`
+  font-size: 3rem;
+  opacity: 0.8;
+`;
+
+export const StatContent = styled.div`
+  display: grid;
+  gap: 0.5rem;
+`;
+
+export const StatValue = styled.div`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.xlarge};
+    font-weight: ${theme.font.bold};
+    color: ${theme.colors.primary};
+  `}
+`;
+
+export const StatLabel = styled.div`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.small};
+    color: ${theme.colors.textName};
+    opacity: 0.8;
+  `}
+`;
+
+export const BarberInfo = styled.div`
+  ${({ theme }) => css`
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  `}
+`;
+
+export const InfoTitle = styled.h3`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.large};
+    color: ${theme.colors.textName};
+    font-weight: ${theme.font.bold};
+    margin-bottom: 1.5rem;
+  `}
+`;
+
+export const InfoGrid = styled.div`
+  display: grid;
+  gap: 1rem;
+`;
+
+export const InfoItem = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  align-items: center;
+`;
+
+export const InfoLabel = styled.span`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.medium};
+    color: ${theme.colors.textName};
+    font-weight: ${theme.font.bold};
+    opacity: 0.8;
+  `}
+`;
+
+export const InfoValue = styled.span`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.medium};
+    color: ${theme.colors.white};
+  `}
+`;

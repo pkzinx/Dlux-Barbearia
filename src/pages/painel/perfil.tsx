@@ -10,6 +10,7 @@ type Barber = {
   email: string;
   photo_url?: string;
   specialties?: string;
+  account_type: 'admin' | 'lux';
 };
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
@@ -19,6 +20,14 @@ const PerfilPage = () => {
   const [barber, setBarber] = useState<Barber | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [stats, setStats] = useState({
+    totalAppointments: 0,
+    completedAppointments: 0,
+    totalRevenue: 0,
+    averageRating: 0,
+    monthlyAppointments: 0,
+    monthlyRevenue: 0
+  });
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -35,6 +44,12 @@ const PerfilPage = () => {
 
     loadBarberData();
   }, [router]);
+
+  useEffect(() => {
+    if (barber && barber.account_type === 'lux') {
+      loadBarberStats();
+    }
+  }, [barber]);
 
   const loadBarberData = async () => {
     try {
@@ -75,6 +90,36 @@ const PerfilPage = () => {
       router.push('/painel/login');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadBarberStats = async () => {
+    if (!barber) return;
+    
+    try {
+      const response = await fetch(`${API_BASE}/barber-stats/${barber.id}/`);
+      if (response.ok) {
+        const data = await response.json();
+        setStats({
+          totalAppointments: data.total_appointments || 0,
+          completedAppointments: data.completed_appointments || 0,
+          totalRevenue: data.total_revenue || 0,
+          averageRating: data.average_rating || 0,
+          monthlyAppointments: data.monthly_appointments || 0,
+          monthlyRevenue: data.monthly_revenue || 0
+        });
+      }
+    } catch (error) {
+      console.error('Erro ao carregar estatísticas:', error);
+      // Dados mock para demonstração
+      setStats({
+        totalAppointments: 45,
+        completedAppointments: 42,
+        totalRevenue: 225000, // R$ 2.250,00 em centavos
+        averageRating: 4.8,
+        monthlyAppointments: 18,
+        monthlyRevenue: 90000 // R$ 900,00 em centavos
+      });
     }
   };
 
@@ -159,7 +204,84 @@ const PerfilPage = () => {
         title="Meu Perfil"
         subtitle="Gerencie suas informações pessoais"
       >
-        <S.ProfileForm>
+        {barber?.account_type === 'lux' ? (
+          <S.StatsContainer>
+            <S.StatsTitle>Suas Estatísticas</S.StatsTitle>
+            
+            <S.StatsGrid>
+              <S.StatCard>
+                <S.StatIcon>📊</S.StatIcon>
+                <S.StatContent>
+                  <S.StatValue>{stats.totalAppointments}</S.StatValue>
+                  <S.StatLabel>Total de Agendamentos</S.StatLabel>
+                </S.StatContent>
+              </S.StatCard>
+
+              <S.StatCard>
+                <S.StatIcon>✅</S.StatIcon>
+                <S.StatContent>
+                  <S.StatValue>{stats.completedAppointments}</S.StatValue>
+                  <S.StatLabel>Agendamentos Concluídos</S.StatLabel>
+                </S.StatContent>
+              </S.StatCard>
+
+              <S.StatCard>
+                <S.StatIcon>💰</S.StatIcon>
+                <S.StatContent>
+                  <S.StatValue>R$ {(stats.totalRevenue / 100).toFixed(2)}</S.StatValue>
+                  <S.StatLabel>Faturamento Total</S.StatLabel>
+                </S.StatContent>
+              </S.StatCard>
+
+              <S.StatCard>
+                <S.StatIcon>⭐</S.StatIcon>
+                <S.StatContent>
+                  <S.StatValue>{stats.averageRating.toFixed(1)}</S.StatValue>
+                  <S.StatLabel>Avaliação Média</S.StatLabel>
+                </S.StatContent>
+              </S.StatCard>
+
+              <S.StatCard>
+                <S.StatIcon>📅</S.StatIcon>
+                <S.StatContent>
+                  <S.StatValue>{stats.monthlyAppointments}</S.StatValue>
+                  <S.StatLabel>Agendamentos Este Mês</S.StatLabel>
+                </S.StatContent>
+              </S.StatCard>
+
+              <S.StatCard>
+                <S.StatIcon>💵</S.StatIcon>
+                <S.StatContent>
+                  <S.StatValue>R$ {(stats.monthlyRevenue / 100).toFixed(2)}</S.StatValue>
+                  <S.StatLabel>Faturamento Este Mês</S.StatLabel>
+                </S.StatContent>
+              </S.StatCard>
+            </S.StatsGrid>
+
+            <S.BarberInfo>
+              <S.InfoTitle>Informações Pessoais</S.InfoTitle>
+              <S.InfoGrid>
+                <S.InfoItem>
+                  <S.InfoLabel>Nome:</S.InfoLabel>
+                  <S.InfoValue>{barber.name}</S.InfoValue>
+                </S.InfoItem>
+                <S.InfoItem>
+                  <S.InfoLabel>Email:</S.InfoLabel>
+                  <S.InfoValue>{barber.email}</S.InfoValue>
+                </S.InfoItem>
+                <S.InfoItem>
+                  <S.InfoLabel>Especialidades:</S.InfoLabel>
+                  <S.InfoValue>{barber.specialties || 'Não informado'}</S.InfoValue>
+                </S.InfoItem>
+                <S.InfoItem>
+                  <S.InfoLabel>Tipo de Conta:</S.InfoLabel>
+                  <S.InfoValue>Lux</S.InfoValue>
+                </S.InfoItem>
+              </S.InfoGrid>
+            </S.BarberInfo>
+          </S.StatsContainer>
+        ) : (
+          <S.ProfileForm>
           <S.PhotoSection>
             <S.PhotoWrapper>
               <img src={form.photo_url || '/assets/img/desc.jpg'} alt={barber?.name || 'Barbeiro'} />
@@ -213,6 +335,7 @@ const PerfilPage = () => {
             </S.SaveButton>
           </S.Actions>
         </S.ProfileForm>
+        )}
       </PanelLayout>
     </>
   );
