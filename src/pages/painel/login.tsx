@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Container } from '../Container/Container';
-import { Background } from '../Background/Background';
-import { Logotipo } from '../Logotipo/Logotipo';
+import { Container } from '../../components/ui/atoms/Container/Container';
+import { Background } from '../../components/ui/atoms/Background/Background';
+import { Logotipo } from '../../components/ui/atoms/Logotipo/Logotipo';
 import * as S from './login.styles';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
